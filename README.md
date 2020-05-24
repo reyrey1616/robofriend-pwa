@@ -1,5 +1,6 @@
 # robofriends
-Tutorial for udemy course - React + Redux + PWA
+
+Progressive web app develop by coding along in udemy course - React + Redux + PWA
 
 To run the project:
 
