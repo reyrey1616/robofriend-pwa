@@ -27,18 +27,55 @@ describe('Search robots', () => {
 describe('REQUEST ROBOTS', () => {
   const initialStateRobots = {
     robots: [],
-    isPending: true,
+    isPending: false,
   };
 
   it('Return the robot initial state', () => {
     expect(reducers.requestRobots(undefined, {})).toEqual(initialStateRobots);
   });
 
-  it('should handle the REQUEST_ROBOTS_PENDING', () => {
+  it('should handle the REQUEST_ROBOTS_PENDING action', () => {
     expect(
-      reducers.searchRobots(initialStateRobots, {
+      reducers.requestRobots(initialStateRobots, {
         type: REQUEST_ROBOTS_PENDING,
       })
     ).toEqual({ robots: [], isPending: true });
+  });
+
+  it('should handle the REQUEST_ROBOTS_SUCCESS action', () => {
+    expect(
+      reducers.requestRobots(initialStateRobots, {
+        type: REQUEST_ROBOTS_SUCCESS,
+        payload: [
+          {
+            id: '123',
+            name: 'John',
+            email: 'john@gmail.com',
+          },
+        ],
+      })
+    ).toEqual({
+      robots: [
+        {
+          id: '123',
+          name: 'John',
+          email: 'john@gmail.com',
+        },
+      ],
+      isPending: false,
+    });
+  });
+
+  it('should handle the REQUEST_ROBOTS_FAILED action', () => {
+    expect(
+      reducers.requestRobots(initialStateRobots, {
+        type: REQUEST_ROBOTS_FAILED,
+        payload: 'noooo!',
+      })
+    ).toEqual({
+      error: 'noooo!',
+      robots: [],
+      isPending: false,
+    });
   });
 });
