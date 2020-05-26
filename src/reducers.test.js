@@ -23,3 +23,22 @@ describe('Search robots', () => {
     ).toEqual({ searchField: 'abc' });
   });
 });
+
+describe('REQUEST ROBOTS', () => {
+  const initialStateRobots = {
+    robots: [],
+    isPending: true,
+  };
+
+  it('Return the robot initial state', () => {
+    expect(reducers.requestRobots(undefined, {})).toEqual(initialStateRobots);
+  });
+
+  it('should handle the REQUEST_ROBOTS_PENDING', () => {
+    expect(
+      reducers.searchRobots(initialStateRobots, {
+        type: REQUEST_ROBOTS_PENDING,
+      })
+    ).toEqual({ robots: [], isPending: true });
+  });
+});
