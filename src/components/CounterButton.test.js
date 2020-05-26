@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import CounterButton from './CounterButton';
-
+// Testing Stateful Component
 it('Renders the Counter Button Component', () => {
   const mockColor = 'red';
   expect(shallow(<CounterButton color={mockColor} />)).toMatchSnapshot();
