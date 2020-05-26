@@ -15,7 +15,7 @@ beforeEach(() => {
     onRequestRobots: jest.fn(),
     robots: [],
     searchField: '',
-    pending: false,
+    isPending: false,
   };
 
   wrapper = shallow(<MainPage {...mockProps} />);
@@ -36,7 +36,7 @@ it('It filters the robot correctly', () => {
       },
     ],
     searchField: 'john',
-    pending: false,
+    isPending: false,
   };
 
   let wrapper2 = shallow(<MainPage {...mockProps2} />);
@@ -60,7 +60,7 @@ it('It filters the robot correctly2', () => {
       },
     ],
     searchField: 'a',
-    pending: false,
+    isPending: false,
   };
 
   const filteredRobots = [];
