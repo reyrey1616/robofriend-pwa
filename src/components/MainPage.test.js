@@ -26,5 +26,25 @@ it('Testing the render of MainPage Component without crashing', () => {
 });
 
 it('It filters the robot correctly', () => {
-  expect(wrapper.instance().filterRobots([])).toEqual([]);
+  const mockProps2 = {
+    onRequestRobots: jest.fn(),
+    robots: [
+      {
+        id: 3,
+        name: 'John',
+        email: 'john@gmail.com',
+      },
+    ],
+    searchField: 'john',
+    pending: false,
+  };
+
+  let wrapper2 = shallow(<MainPage {...mockProps2} />);
+  expect(wrapper2.instance().filterRobots()).toEqual([
+    {
+      id: 3,
+      name: 'John',
+      email: 'john@gmail.com',
+    },
+  ]);
 });
